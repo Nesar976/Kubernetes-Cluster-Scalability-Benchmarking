@@ -1,0 +1,13 @@
+Benchmark Summary Report - 20231027120000
+----------------------------------------
+Workload: pods
+Cluster Size: small
+Iterations: 10
+QPS: 5
+Burst: 10
+
+Metrics:
+- P99 PodReady: 1540ms
+- P99 PodScheduled: 230ms
+
+Total files collected: 4
