@@ -21,8 +21,58 @@ We focus on three primary density tests:
 *   `scripts/`: Automation for running benchmarks, collecting metrics, and cleanup.
 *   `docs/`: Detailed design, architecture, and analysis guides.
 
+
 ## Quick Start
-*(Detailed instructions coming in future commits)*
+
+### Prerequisites
+*   Kubernetes Cluster (tested on v1.25+)
+*   `kubectl` configured with cluster admin access.
+*   `kube-burner` binary installed (v1.0+).
+
+### Running a Benchmark
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-org/Kubernetes-Cluster-Scalability-Benchmarking.git
+    cd Kubernetes-Cluster-Scalability-Benchmarking
+    ```
+
+2.  **Execute the benchmark script:**
+    The `run-benchmark.sh` script handles workload selection and configuration.
+    
+    Syntax: `./scripts/run-benchmark.sh <workload> <cluster-size>`
+
+    Examples:
+    ```bash
+    # Run Pod Density on a Small Cluster
+    ./scripts/run-benchmark.sh pods small
+
+    # Run Deployment Density on a Medium Cluster
+    ./scripts/run-benchmark.sh deployments medium
+    ```
+
+3.  **Collect Results:**
+    Results are automatically collected in the `results/` directory, organized by UUID.
+    
+    To manually archive results:
+    ```bash
+    ./scripts/collect-metrics.sh results/
+    ```
+
+4.  **Cleanup:**
+    To remove all resources created by the benchmark:
+    ```bash
+    ./scripts/cleanup.sh
+    ```
+
+## Configuration
+Adjust the parameters in `configs/` to match your cluster capacity.
+
+| Parameter | Description |
+| :--- | :--- |
+| `JOB_ITERATIONS` | Number of distinct jobs/objects to create. |
+| `QPS` | Rate of API requests per second. |
+| `BURST` | Maximum burst size for API requests. |
 
 ## License
 Apache 2.0
