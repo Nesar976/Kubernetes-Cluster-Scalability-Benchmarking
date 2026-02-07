@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# Main script to run benchmarks
+# Script: run-benchmark.sh
+# Description: Orchestrates the execution of Kube-Burner benchmarks.
 # Usage: ./run-benchmark.sh <workload> <cluster-size>
 
 WORKLOAD=$1

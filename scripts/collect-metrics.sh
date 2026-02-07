@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# Script to collect metrics after benchmark runs
+# Script: collect-metrics.sh
+# Description: Aggregates and archives benchmark results (JSON and logs) for analysis.
 # Usage: ./collect-metrics.sh <results-dir>
 
 RESULTS_DIR=${1:-results}
