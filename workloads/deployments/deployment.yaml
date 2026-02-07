@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pause-deployment-{{.ITERATION}}-{{.REPLICA}}
+  labels:
+    app: pause-deployment
+spec:
+  replicas: {{.replicas}}
+  selector:
+    matchLabels:
+      app: pause-deployment-{{.ITERATION}}-{{.REPLICA}}
+  template:
+    metadata:
+      labels:
+        app: pause-deployment-{{.ITERATION}}-{{.REPLICA}}
+    spec:
+      containers:
+      - name: pause
+        image: {{.containerImage}}
+        resources:
+          requests:
+            cpu: 10m
+            memory: 10Mi
