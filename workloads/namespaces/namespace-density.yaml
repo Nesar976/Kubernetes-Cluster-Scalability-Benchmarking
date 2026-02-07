@@ -1,0 +1,24 @@
+---
+global:
+  gc: true
+  measurements:
+    - name: podLatency
+      thresholds:
+        - conditionType: Ready
+          metric: P99
+          threshold: 5000ms
+
+jobs:
+  - name: namespace-density
+    jobType: create
+    jobIterations: {{.JOB_ITERATIONS}}
+    qps: {{.QPS}}
+    burst: {{.BURST}}
+    namespacedIterations: true
+    namespace: namespace-density-benchmark
+    podWait: false
+    objects:
+      - objectTemplate: configmap.yaml
+        replicas: 10
+        inputVars:
+          data_size: 1024
