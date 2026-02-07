@@ -11,7 +11,9 @@ global:
 jobs:
   - name: pod-density
     jobType: create
+    # Iterations controlled by env var
     jobIterations: {{.JOB_ITERATIONS}}
+    # QPS and Burst controlled by env var to allow cluster sizing
     qps: {{.QPS}}
     burst: {{.BURST}}
     namespacedIterations: false
