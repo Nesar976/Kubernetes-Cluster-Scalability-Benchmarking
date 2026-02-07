@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pause-pod-{{.ITERATION}}-{{.REPLICA}}
+  labels:
+    app: pause-pod
+spec:
+  containers:
+  - name: pause
+    image: {{.containerImage}}
+    resources:
+      requests:
+        cpu: 10m
+        memory: 10Mi

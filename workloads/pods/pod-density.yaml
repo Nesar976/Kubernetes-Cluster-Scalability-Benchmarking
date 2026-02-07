@@ -1,0 +1,24 @@
+---
+global:
+  gc: true
+  measurements:
+    - name: podLatency
+      thresholds:
+        - conditionType: Ready
+          metric: P99
+          threshold: 5000ms
+
+jobs:
+  - name: pod-density
+    jobType: create
+    jobIterations: {{.JOB_ITERATIONS}}
+    qps: {{.QPS}}
+    burst: {{.BURST}}
+    namespacedIterations: false
+    namespace: pod-density-benchmark
+    podWait: false
+    objects:
+      - objectTemplate: pod.yaml
+        replicas: 1
+        inputVars:
+          containerImage: registry.k8s.io/pause:3.9
